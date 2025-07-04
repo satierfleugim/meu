@@ -3,36 +3,147 @@
 <head>
   <meta charset="UTF-8">
   <title>Cartas Favoritas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: sans-serif; background: #dfe3ea; }
-    header, .search-box, .categories { background: #111c21; color: white; }
-    header { padding: 1rem; display: flex; align-items: center; gap: 1rem; }
-    .profile-img { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 2px solid white; }
-    .title-section { font-size: 1.2rem; font-weight: bold; }
-    .search-box { padding: 1rem; }
-    .search-box input { width: 100%; padding: 0.8rem; border-radius: 20px; border: none; font-size: 1rem; }
-    .categories { display: flex; overflow-x: auto; gap: 0.6rem; padding: 0.5rem 1rem; }
-    .category { padding: 0.4rem 1rem; background: #eee; color: #333; border-radius: 25px; white-space: nowrap; cursor: pointer; flex-shrink: 0; }
-    .category.active { background: #ff6600; color: white; }
-    .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; padding: 1rem; }
-    .card { background: #dfe2e6; border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; height: 180px; }
-    .card img { width: 100%; height: 75%; object-fit: cover; }
-    .card-text { padding: 0.5rem; text-align: center; font-weight: bold; }
-    .card-text a { text-decoration: none; color: #000; }
-    .card-text a:hover { color: #ff6600; }
-    .category-label { font-size: 0.75rem; color: #ff6600; text-align: center; }
-    .card:focus, .category:focus, a:focus { outline: none; }
+
+    /* Container central com largura máxima */
+    .container {
+      max-width: 480px;
+      margin: 0 auto;
+      background: #dfe3ea;
+      min-height: 100vh;
+    }
+
+    header, .search-box, .categories {
+      background: #111c21;
+      color: white;
+    }
+
+    header {
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .profile-img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid white;
+    }
+
+    .title-section {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    .search-box {
+      padding: 1rem;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 0.8rem;
+      border-radius: 20px;
+      border: none;
+      font-size: 1rem;
+    }
+
+    .categories {
+      display: flex;
+      overflow-x: auto;
+      gap: 0.6rem;
+      padding: 0.5rem 1rem;
+    }
+
+    .category {
+      padding: 0.4rem 1rem;
+      background: #eee;
+      color: #333;
+      border-radius: 25px;
+      white-space: nowrap;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .category.active {
+      background: #ff6600;
+      color: white;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      padding: 1rem;
+    }
+
+    .card {
+      background: #dfe2e6;
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      height: 180px;
+    }
+
+    .card img {
+      width: 100%;
+      height: 75%;
+      object-fit: cover;
+    }
+
+    .card-text {
+      padding: 0.5rem;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .card-text a {
+      text-decoration: none;
+      color: #000;
+    }
+
+    .card-text a:hover {
+      color: #ff6600;
+    }
+
+    .category-label {
+      font-size: 0.75rem;
+      color: #ff6600;
+      text-align: center;
+    }
+
+    .card:focus, .category:focus, a:focus {
+      outline: none;
+    }
+
+    /* Responsividade: se a tela for maior que 600px, 2 colunas */
+    @media (min-width: 600px) {
+      .card-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <header id="perfil-section"></header>
-  <div class="search-box">
-    <input type="text" id="searchInput" placeholder="Procurar por...">
+  <div class="container">
+    <header id="perfil-section"></header>
+
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Procurar por...">
+    </div>
+
+    <div class="categories" id="categoryList"></div>
+
+    <div class="card-grid" id="cardGrid"></div>
   </div>
-  <div class="categories" id="categoryList"></div>
-  <div class="card-grid" id="cardGrid"></div>
 
   <script>
     // Carregar perfil
