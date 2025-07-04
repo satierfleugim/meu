@@ -8,7 +8,6 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: sans-serif; background: #dfe3ea; }
 
-    /* Container central limitado */
     .container {
       max-width: 480px;
       margin: 0 auto;
@@ -77,31 +76,37 @@
 
     .card-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr; /* DUAS COLUNAS NO MOBILE E SEMPRE */
+      grid-template-columns: 1fr 1fr;
       gap: 1rem;
       padding: 1rem;
     }
 
     .card {
-      background: #dfe2e6;
+      background: #ffffff;
       border-radius: 16px;
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      justify-content: flex-end;
+      justify-content: flex-start;
       height: 180px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      border: none;
     }
 
     .card img {
       width: 100%;
-      height: 75%;
+      height: 130px;
       object-fit: cover;
+      display: block;
+      border: none;
     }
 
     .card-text {
-      padding: 0.5rem;
+      padding: 0.4rem 0.5rem;
       text-align: center;
       font-weight: bold;
+      background: #fff;
+      font-size: 0.95rem;
     }
 
     .card-text a {
@@ -122,7 +127,6 @@
     .card:focus, .category:focus, a:focus {
       outline: none;
     }
-
   </style>
 </head>
 <body>
@@ -140,18 +144,15 @@
   </div>
 
   <script>
-    // Carregar perfil
     fetch('perfil.html').then(r => r.text()).then(html => {
       document.getElementById('perfil-section').innerHTML = html;
     });
 
-    // Carregar cartas
     fetch('cartas.html').then(r => r.text()).then(html => {
       document.getElementById('cardGrid').innerHTML = html;
       gerarCategorias();
     });
 
-    // Buscar e filtrar cartas
     document.getElementById('searchInput').addEventListener('input', filtrarCartas);
 
     function gerarCategorias() {
