@@ -5,27 +5,29 @@
   <title>Cartas Favoritas</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: sans-serif;
-      background: #07142A;
-      color: #ffffff;
+      background: #dfe3ea;
+    }
+
+    img {
+      border: none;
+      outline: none;
+      box-shadow: none;
+      display: block;
     }
 
     .container {
       max-width: 480px;
       margin: 0 auto;
-      background: #07142A;
+      background: #dfe3ea;
       min-height: 100vh;
     }
 
     header, .search-box, .categories {
-      background: #092142;
+      background: #111c21;
       color: white;
     }
 
@@ -59,12 +61,6 @@
       border-radius: 20px;
       border: none;
       font-size: 1rem;
-      background: #6B94B2;
-      color: #000000;
-    }
-
-    .search-box input::placeholder {
-      color: #000000;
     }
 
     .categories {
@@ -76,8 +72,8 @@
 
     .category {
       padding: 0.4rem 1rem;
-      background: #6B94B2;
-      color: #07142A;
+      background: #eee;
+      color: #333;
       border-radius: 25px;
       white-space: nowrap;
       cursor: pointer;
@@ -85,7 +81,7 @@
     }
 
     .category.active {
-      background: #10538A;
+      background: #ff6600;
       color: white;
     }
 
@@ -97,50 +93,47 @@
     }
 
     .card {
-      background: #092142;
+      background: #ffffff;
       border-radius: 16px;
       overflow: hidden;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
       height: 180px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      border: none;
     }
 
     .card img {
       width: 100%;
       height: 130px;
       object-fit: cover;
-      display: block;
-      border: none;
     }
 
     .card-text {
       padding: 0.4rem 0.5rem;
       text-align: center;
       font-weight: bold;
-      background: #10538A;
+      background: #fff;
       font-size: 0.95rem;
-      color: white;
     }
 
     .card-text a {
       text-decoration: none;
-      color: #ffffff;
+      color: #000;
     }
 
     .card-text a:hover {
-      color: #6B94B2;
+      color: #ff6600;
     }
 
     .category-label {
       font-size: 0.75rem;
-      color: #6B94B2;
+      color: #ff6600;
       text-align: center;
     }
 
-    .card:focus,
-    .category:focus,
-    a:focus {
+    .card:focus, .category:focus, a:focus {
       outline: none;
     }
   </style>
